@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用canvas绘制</title>
+</head>
+<style>
+     html,body{
+        width: 100%;
+        height: 100%;
+    }
+    .clickGo{
+                width: 100px;
+                height: 100px;
+                background-color:white;
+                color:orange;
+                position: absolute;
+                top:40%;
+                left: 40%;
+                text-align: center;
+                line-height: 30px;
+    }
+</style>
+<body>
+    <canvas id="change"></canvas>
+    <div class="clickGo">点我回paintAPI渲染</div>
+</body>
+    <script type="text/javascript">
+        var canvas=document.getElementById("change");
+        var aw =  document.body.offsetWidth,ew = 50
+        var ah =  document.body.offsetHeight,eh=50,space=10
+        var col = aw/ew
+        var row = ah/eh
+        canvas.width =aw;
+        canvas.height=ah;
+        var context=canvas.getContext('2d');
+        console.log(row,'多少行')
+        console.log(col,'多少列')
+        for(var i=0;i<row;i++){
+            for(var j=0;j<col;j++){
+                context.fillStyle=`#${Math.random().toString(16).slice(2, 8)}`
+                context.fillRect(j*(ew+space),i*(eh+space),ew,eh);
+         }
+        }
+
+        let clickGo = document.querySelector('.clickGo');
+        clickGo.addEventListener('click',()=>{
+            location.href="./index.html";
+        })
+
+        //https://www.canvasapi.cn/HTMLCanvasElement/toDataURL ,转为图片
+        var dataURL = canvas.toDataURL('image/jpeg');  
+        console.log(dataURL,'dataURL')
+    </script>
+</html>

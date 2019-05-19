@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css paint 绘制随机颜色块的背景</title>
+</head>
+<style>
+    :root{
+        --w: 100;
+        --h: 100;
+        --spacing: 10;
+    }
+    html,body,.css-paint{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .css-paint{
+        background-image: paint(randomcolor)
+    }
+
+    .click{
+                width: 100px;
+                height: 100px;
+                background-color:white;
+                color: red;
+                border: 2px solid royalblue
+                         
+    }
+
+</style>
+<body>
+  <div class="css-paint">
+      <div class="click">点我去用canvas绘制</div>
+  </div>
+</body>
+<script>
+        if(window.CSS){
+           CSS.paintWorklet.addModule('worker.js');
+        }
+        let clickBu = document.querySelector('.click');
+        clickBu.addEventListener('click',()=>{
+            //原生跳转居然忘记了！！！！
+            //a=>b=>c,3个页面。假如当前页是b页面（第二个页面）
+            //location.replace；字面意思，替代当前页，返回后是返回的是a页面
+            //location.href；返回后是返回的是b页面
+            //window.navigate("https://www.baidu.com"),针对IE的
+            //window.open("https://www.baidu.com")；新开一个窗口
+            //.self.location 和 top.location()????
+            location.href="./index2.html";
+        })
+           
+    </script>
+</html>
